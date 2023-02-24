@@ -13,7 +13,7 @@ function [X1,X2] = fftUniBi(x)
 
 Nsamples = size(x,1);
 X2 = fft(x)/Nsamples;
-X1 = [X2(1,:); 2*X2(2:Nsamples/2+1,:)];
+X1 = [X2(1,:); 2*X2(2:Nsamples/2,:)];
 
 end
 

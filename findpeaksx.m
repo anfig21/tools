@@ -77,7 +77,7 @@ if smoothtype<1;smoothtype=1;end
 if smoothwidth<1;smoothwidth=1;end
 smoothwidth=round(smoothwidth);
 peakgroup=round(peakgroup);
-if smoothwidth>1,
+if smoothwidth>1
     d=fastsmooth(deriv(y),smoothwidth,smoothtype);
 else
     d=deriv(y);
@@ -90,17 +90,17 @@ AmpTest=AmpThreshold;
 PeakX=0;
 PeakY=0;
 % plot(x,d,'.')
-for j=2*round(smoothwidth/2)-1:length(y)-smoothwidth-1,
-    if sign(d(j)) > sign (d(j+1)), % Detects zero-crossing
-        if d(j)-d(j+1) > SlopeThreshold, % if slope of derivative is larger than SlopeThreshold
+for j=2*round(smoothwidth/2)-1:length(y)-smoothwidth-1
+    if sign(d(j)) > sign (d(j+1)) % Detects zero-crossing
+        if d(j)-d(j+1) > SlopeThreshold % if slope of derivative is larger than SlopeThreshold
                 xx=zeros(size(peakgroup));yy=zeros(size(peakgroup));
-                for k=1:peakgroup, % Create sub-group of points near peak
+                for k=1:peakgroup % Create sub-group of points near peak
                     groupindex=j+k-n+2;
                     if groupindex<1, groupindex=1;end
                     if groupindex>vectorlength, groupindex=vectorlength;end
                     xx(k)=x(groupindex);yy(k)=y(groupindex);
                 end
-                if peakgroup<3;
+                if peakgroup<3
                     PeakY=max(yy);
                 else
                     PeakY=mean(yy);
@@ -112,7 +112,7 @@ for j=2*round(smoothwidth/2)-1:length(y)-smoothwidth-1,
             % peak height (y-value). If peak measurement fails and
             % results in NaN, or if the measured peak height is less
             % than AmpThreshold, skip this peak
-            if isnan(PeakX) || isnan(PeakY) || PeakY<AmpThreshold,
+            if isnan(PeakX) || isnan(PeakY) || PeakY<AmpThreshold
                 % Skip this peak if PeakY is below AmpThreshold
             else % Otherwise count this as a valid peak
                 P(peak,:) = [round(peak) PeakX PeakY];
@@ -139,7 +139,7 @@ n=length(a);
 d=zeros(size(a));
 d(1)=a(2)-a(1);
 d(n)=a(n)-a(n-1);
-for j = 2:n-1;
+for j = 2:n-1
     d(j)=(a(j+1)-a(j-1)) ./ 2;
 end
 
@@ -180,7 +180,7 @@ SumPoints=sum(Y(1:w));
 s=zeros(size(Y));
 halfw=round(w/2);
 L=length(Y);
-for k=1:L-w,
+for k=1:L-w
     s(k+halfw-1)=SumPoints;
     SumPoints=SumPoints-Y(k);
     SumPoints=SumPoints+Y(k+w);
@@ -188,10 +188,10 @@ end
 s(k+halfw)=sum(Y(L-w+1:L));
 SmoothY=s./w;
 % Taper the ends of the signal if ends=1.
-if ends==1,
+if ends==1
     startpoint=(smoothwidth + 1)/2;
     SmoothY(1)=(Y(1)+Y(2))./2;
-    for k=2:startpoint,
+    for k=2:startpoint
         SmoothY(k)=mean(Y(1:(2*k-1)));
         SmoothY(L-k+1)=mean(Y(L-2*k+2:L));
     end
