@@ -1,6 +1,6 @@
-function [H,uk] = dictionary(c,f,r,N)
-%[H,uk] = dictionary(c,f,r0,N) Obtains the H matrix for a sound field at a
-% position r0 comprised of N plane waves with propagation vector sampled
+function [H,uk] = dictionaryPW(c,f,r,N)
+%[H,uk] = dictionaryPW(c,f,r0,N) Obtains the H matrix for a sound field at
+% a position r0 comprised of N plane waves with propagation vector sampled
 % along the surface of a unit sphere.
 %   Input:
 %       - c         : speed of sound (m/s). Scalar
@@ -16,7 +16,7 @@ function [H,uk] = dictionary(c,f,r,N)
 % Date: February 2022
 
 %% ERROR HANDLING
-if nargin < 4, error('dictionary Error: Not enough input parameters.'), end
+if nargin < 4, error('dictionaryPW Error: Not enough input parameters.'), end
 
 %% MAIN CODE
 Nf = length(f);

@@ -23,11 +23,11 @@ set(0,'DefaultLineMarkerSize',params.plot.markersize)
 
 % Color
 params.plot.nColors = 5;
-params.plot.colormap = cbrewer('qual', 'Set1', params.plot.nColors);
+params.plot.colormap = cbrewer2('qual', 'Set1', params.plot.nColors);
 params.plot.nColors2 = 11;
-params.plot.colormap2 = cbrewer('qual', 'Paired', params.plot.nColors2);
+params.plot.colormap2 = cbrewer2('qual', 'Paired', params.plot.nColors2);
 params.plot.nColors3 = 11;
-params.plot.colormap3 = cbrewer('div', 'Spectral', params.plot.nColors3);
+params.plot.colormap3 = cbrewer2('div', 'Spectral', params.plot.nColors3);
 params.plot.markers = {'square','^', 'v', 'o', 'd'};
 
 % Axis properties
