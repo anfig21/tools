@@ -32,12 +32,12 @@ for ii = 1:Nf, kv(:,:,ii) = k(ii)*uk; end
 
 % Dictionary
 H = nan(M,N,Nf);
-if Nf > 1, d = waitbar(0,'Loading...0\%','Name','Building dictionary...'); end
+% if Nf > 1, d = waitbar(0,'Loading...0\%','Name','Building dictionary...'); end
 for ii = 1:Nf
     H(:,:,ii) = exp(-1i*r'*squeeze(kv(:,:,ii)));
-    if Nf > 1, waitbar(ii/Nf,d,strcat("Loading... ",string(round(100*ii/Nf,2)),"\,\%")); end
+    % if Nf > 1, waitbar(ii/Nf,d,strcat("Loading... ",string(round(100*ii/Nf,2)),"\,\%")); end
 end
-if Nf > 1, delete(d), end
+% if Nf > 1, delete(d), end
 
 % Normalisation
 H = H./vecnorm(H,2,2);
