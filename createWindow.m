@@ -1,6 +1,6 @@
 function w = createWindow(Data,Tini,Tfin)
 %w = createWindow(Data,Tini,Tfin) Generate window using half Hanning window
-%of length 1 ms on each side.
+%of total length 0.5 ms on each side.
 %   Input:
 %       - Data      : raw data. Structure
 %       - Tini      : initial time. Scalar
