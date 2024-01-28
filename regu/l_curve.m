@@ -32,7 +32,7 @@ function [reg_corner,rho,eta,reg_param] = l_curve(U,sm,b,method,L,V,plotFlag)
 % Per Christian Hansen, DTU Compute, October 27, 2010.
 
 % Set defaults.
-if (nargin==3), method='Tikh'; end  % Tikhonov reg. is default.
+if (nargin==3), method='Tikh'; plotFlag = false; end  % Tikhonov reg. is default.
 npoints = 200;  % Number of points on the L-curve for Tikh and dsvd.
 smin_ratio = 16*eps;  % Smallest regularization parameter.
 

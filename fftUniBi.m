@@ -11,9 +11,16 @@ function [X1,X2] = fftUniBi(x)
 % Author: Antonio Figueroa Durán
 % Date: June 2022
 
+%% ERROR HANDLING
+arguments
+    x (:,:) double {mustBeReal}
+end
+if size(x,1) == 1, x = x(:); end
+
+%% MAIN CODE
 Nsamples = size(x,1);
 X2 = fft(x)/Nsamples;
-X1 = [X2(1,:); 2*X2(2:Nsamples/2,:)];
+X1 = [X2(1,:); 2*X2(2:ceil(Nsamples/2),:)];
 
 end
 

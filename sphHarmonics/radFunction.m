@@ -44,6 +44,7 @@ end
 
 % Spherical Hankel function
 h = h.*sqrt(pi./(2*kr));
+h(isnan(h)) = 0;
 h = squeeze(h);
 
 end
